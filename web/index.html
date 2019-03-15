@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实时-上证指数</title>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/javascript">
+
+    var dom = document.getElementById("container");
+    dom.style.height = window.innerHeight - 80 + "px";
+    var myChart = echarts.init(dom);
+    var index = [];
+    option = {
+        title: {
+            text: '实时-上证指数[000001]',
+            subtext: 'Example in MetricsGraphics.js',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross'
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: getxAxisData(),
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+            type: 'value',
+            name: "涨幅（%）",
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: "121",
+            data: index,
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+        }]
+    };
+
+    myChart.setOption(option, true);
+    // var ws = new WebSocket("ws://127.0.0.1:1234");
+    //
+    // ws.onmessage = function (e) {
+    //     var data = JSON.parse(e.data);
+    //     option.series[0].data = [];
+    //     for (var i = 0; i < data.length; i++) {
+    //         var tmp = data[i].split("~");
+    //         option.series[0].data.push(tmp[1]);
+    //     }
+    //     myChart.setOption(option, true);
+    // };
+
+    function getxAxisData() {
+        var timeData = [];
+        var amstr = "2000/01/01 09:30:00";
+        var pmstr = "2000/01/01 13:00:00";
+
+        var amdate = new Date(amstr);
+        var pmdate = new Date(pmstr);
+
+        for (var i = 0; i <= 120 * 60 / 6; i++) {
+            var newAmDate = new Date(amdate.getTime() + 6000 * i);
+            timeData.push(gettTime(newAmDate));
+        }
+        for (var k = 0; k <= 120 * 60 / 6; k++) {
+            var newPmDate = new Date(pmdate.getTime() + 6000 * k);
+            timeData.push(gettTime(newPmDate));
+        }
+
+        function gettTime(date) {
+            var nowHours = date.getHours().toString();       //获取当前小时数(0-23)
+            var nowMin = date.getMinutes().toString();     //获取当前分钟数(0-59)
+            var nowSeconds = date.getSeconds().toString();     //获取当前秒数(0-59)
+
+            nowHours = timeAdd0(nowHours);
+            nowMin = timeAdd0(nowMin);
+            nowSeconds = timeAdd0(nowSeconds);
+
+            function timeAdd0(str) {
+                if (str.length <= 1) {
+                    str = '0' + str;
+                }
+                return str
+            }
+
+            return nowHours + ':' + nowMin + ':' + nowSeconds;
+        }
+
+        return timeData;
+    }
+
+</script>
+</body>
+</html>

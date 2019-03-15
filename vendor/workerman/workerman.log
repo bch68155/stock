@@ -1,0 +1,26 @@
+2019-03-14 13:41:24 pid:1 Worker process terminated with ERROR: E_ERROR "Call to a member function send() on null in C:\git_project\stock\start.php on line 18"
+2019-03-15 02:05:52 pid:1 Worker process terminated
+2019-03-15 02:07:16 pid:1 Worker process terminated
+2019-03-15 02:23:23 pid:1 Worker process terminated
+2019-03-15 02:25:07 pid:1 Worker process terminated
+2019-03-15 02:27:18 pid:1 Worker process terminated
+2019-03-15 02:28:04 pid:1 Worker process terminated
+2019-03-15 02:31:26 pid:1 Worker process terminated
+2019-03-15 02:43:14 pid:1 Worker process terminated with ERROR: E_ERROR "Uncaught exception 'Exception' with message 'You can't send(array) to client, you need to convert it to a string. ' in C:\git_project\stock\vendor\workerman\workerman\Protocols\Websocket.php:236
+Stack trace:
+#0 C:\git_project\stock\vendor\workerman\workerman\Connection\TcpConnection.php(344): Workerman\Protocols\Websocket::encode(Array, Object(Workerman\Connection\TcpConnection))
+#1 C:\git_project\stock\start.php(25): Workerman\Connection\TcpConnection->send(Array)
+#2 [internal function]: {closure}()
+#3 C:\git_project\stock\vendor\workerman\workerman\Events\React\Base.php(77): call_user_func_array(Object(Closure), Array)
+#4 [internal function]: Workerman\Events\React\Base->Workerman\Events\React\{closure}(Object(React\EventLoop\Timer\Timer))
+#5 C:\git_project\stock\vendor\react\event-loop\src\Timer\Timers.php(96): call_user_func(Object(Closure), Object(React\EventLoop\Timer\Timer))
+#6 C:\git_project\stock\vendor\react\event-loop\src\StreamSelectLoop.php(183): React\EventLoop\Timer\Timers->tick()
+#7 C:\git_pro in C:\git_project\stock\vendor\workerman\workerman\Protocols\Websocket.php on line 236"
+2019-03-15 02:43:46 pid:1 Worker process terminated
+2019-03-15 02:46:34 pid:1 Worker process terminated
+2019-03-15 02:48:05 pid:1 Worker process terminated
+2019-03-15 02:49:03 pid:1 Worker process terminated
+2019-03-15 02:49:42 pid:1 Worker process terminated
+2019-03-15 02:50:01 pid:1 Worker process terminated
+2019-03-15 02:52:14 pid:1 Worker process terminated
+2019-03-15 14:41:05 pid:1 Worker process terminated with ERROR: E_ERROR "Call to undefined function isTradeStatus() in C:\git_project\stock\start.php on line 21"

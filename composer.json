@@ -1,0 +1,7 @@
+{
+  "require": {
+    "workerman/workerman" : ">=3.5.16",
+    "workerman/workerman-for-win": "^3.5",
+    "clue/redis-react": "^2.3"
+  }
+}
