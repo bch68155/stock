@@ -40,6 +40,10 @@ $worker->onWorkerStart = function ($worker) { // 当进程启动的时候
             }
         });
     };
+    
+    $worker->onClose = function ($connection) {
+        \Workerman\Lib\Timer::del($connection->worker->timerId);
+    }
 };
 
 Worker::runAll(); // 启动进程
